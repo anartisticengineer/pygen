@@ -1,5 +1,6 @@
 import sys
 import os
+import utils.fileutils as util
 from dotenv import load_dotenv
 
 if __name__ == "__main__":
@@ -17,24 +18,14 @@ if __name__ == "__main__":
         else:
             # create and navigate to the new folder
             print("Creating new folder at " + os.getcwd())
-            os.mkdir(destFolderName)
-            os.chdir(destFolderName)
-            # will be a separate function for creating files
-            li = open("LICENSE.md", "w")
-            li.close()
-            del li
-            readMe = open("README.md", "w")
-            readMe.close()
-            del readMe
-            gitIgnore = open(".gitignore", "w")
-            gitIgnore.close()
-            del gitIgnore
+            util.makeAndChangeToDirectory(destFolderName)
+            # create startup files
+            util.createFile("LICENSE.md")
+            util.createFile("README.md")
+            util.createFile(".gitignore")
             # create another directory level to store the main py file
-            os.mkdir(destFolderName)
-            os.chdir(destFolderName)
-            mainPyFile = open("__main__.py", "w")
-            mainPyFile.close()
-            del mainPyFile
+            util.makeAndChangeToDirectory(destFolderName)
+            util.createFile("__main__.py")
         print("Done ~ ^.^")
         print("You can peep the file here:")
         os.chdir("../")
