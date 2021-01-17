@@ -26,7 +26,7 @@ if __name__ == "__main__":
             # create another directory level to store the main py file
             util.makeAndChangeToDirectory(destFolderName)
             util.createFile("__main__.py")
-        print("Done ~ ^.^")
+        print("Done ~ :D")
         print("You can peep the file here:")
         os.chdir("../")
         print(os.getcwd())
